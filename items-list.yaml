@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: items-list
+  name: items-list
+  namespace: anil
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: items-list
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: items-list
+    spec:
+      containers:
+      - image: anilkumarkolla10/item-list:v01
+        name: items-list
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_URL
+          value: mongodb://mongo:27017  
+        imagePullPolicy: Always
+status: {}
